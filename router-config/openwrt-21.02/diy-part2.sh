@@ -50,6 +50,13 @@ svn co https://github.com/hubutui/p7zip-lede/trunk package/lean/p7zip
 # Add to compile options (Add related dependencies according to the requirements of the third-party software package Makefile)
 # sed -i "/DEFAULT_PACKAGES/ s/$/ pirania-app pirania ip6tables-mod-nat ipset shared-state-pirania uhttpd-mod-lua/" target/linux/armvirt/Makefile
 
+# Add luci-app-openclash
+svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openwrt-openclash
+pushd package/openwrt-openclash/tools/po2lmo && make && sudo make install 2>/dev/null && popd
+
+# Add luci-theme-neobird theme
+git clone --depth=1 https://github.com/thinktip/luci-theme-neobird
+
 # Apply patch
 # git apply ../router-config/patches/{0001*,0002*}.patch --directory=feeds/luci
 #
